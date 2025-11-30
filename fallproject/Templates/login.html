@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Login — Secure Demo{% endblock %}
+
+{% block content %}
+  <div class="card form-card">
+    <h2>Login</h2>
+    <form method="POST" class="form">
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email">
+      </label>
+      <label class="field">
+        <span>Password</span>
+        <div class="pw-row">
+          <input id="pw-login" type="password" name="password" required>
+          <button type="button" id="toggle-login" class="small-btn">Show</button>
+        </div>
+      </label>
+
+      <div class="form-actions">
+        <button class="button" type="submit">Login</button>
+        <a class="muted" href="{{ url_for('index') }}">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+<script>
+document.getElementById('toggle-login').addEventListener('click', function(){
+  const p = document.getElementById('pw-login');
+  // toggle password functionality
+  if(p.type === 'password'){ p.type = 'text'; this.textContent = 'Hide'; }
+  else{ p.type = 'password'; this.textContent = 'Show'; }
+});
+</script>
+{% endblock %}
